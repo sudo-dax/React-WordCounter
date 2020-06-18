@@ -6,11 +6,14 @@ class WordCounter extends React.Component {
     constructor(props) {
         super(props);
         this.state = { text: '' }
+        // Hardbind a perfect facsimile to this so that when calle on render, i
+        // it is in the context of handleTextChange
+        this.handleTextChange = this.handleTextChange.bind(this);
     }
 
-handleTextChange(text) {
-    console.log(text);
+handleTextChange(currentText) {
     // Change the state
+    this.setState((prevState) => ({ text: currentText}))
 }
 
     render() {
